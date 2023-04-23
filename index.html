@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>contact form to email javascript</title>
+</head>
+<body>
+    <div class="container">
+        <form onsubmit="envoiyEmail() ; reset();return false">
+            <h3> GET IN TOUCH</h3>
+            <input type="text" id="name" placeholder="your Name" required>
+            <input type="email" id="Email" placeholder="your Email " required>
+            <input type="text" id="phone" placeholder="Phone no." required>
+            <textarea id="message" rows="4" placeholder="how can we help you?"></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function envoiyEmail(){
+            Email.send({
+                SecureToken:"78902e31-e540-4ecc-bf35-833af1cbabc3",
+                 To : 'benhssainkndm@gmail.com',
+                 From : document.getElementById("email").value,
+                 Subject : "New contact form Enquiry",
+                 Body : "Name :" + document.getElementById("name").value 
+                       + "<br> Email :" + document.getElementById("Email").value 
+                       + " <br> Phone :" +document.getElementById("phone").value
+                       + " <br> message :" +document.getElementById("message").value
+                }).then(
+                message => alert("message est envoiye")
+                );
+        }
+    </script>
+</body>
+</html>
